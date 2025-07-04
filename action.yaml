@@ -1,0 +1,31 @@
+name: "Checkineer"
+description: "Build site → headless Playwright + axe-core → report → optional fail."
+inputs:
+  build-command:
+    description: "Command to build the site"
+    required: false
+    default: "npm run build"
+  serve-command:
+    description: "Command to start the site server"
+    required: false
+    default: "npm start"
+  serve-port:
+    description: "Port where the server listens"
+    required: false
+    default: "8080"
+  api-endpoint:
+    description: "Your compliance API URL"
+    required: true
+  api-token:
+    description: "Bearer token for API (pass via secrets)"
+    required: true
+  fail-on-violation:
+    description: "Cancel build if violations? (true/false)"
+    required: false
+    default: "true"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "shield-check"
+  color: "blue"
